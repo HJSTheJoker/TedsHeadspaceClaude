@@ -167,3 +167,37 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* News card styles */
+.news-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.article-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.news-card h2 {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.article-source {
+    font-style: italic;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.news-card p {
+    flex-grow: 1;
+}
+
+.news-card a {
+    align-self: flex-start;
+    margin-top: 1rem;
+}
