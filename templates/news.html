@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}News - Ted's Headspace Claude{% endblock %}
+
+{% block content %}
+<h1>Tech News</h1>
+<div id="news-container">
+    <p>Loading latest tech news...</p>
+</div>
+
+<script>
+    fetch('/fetch-news')
+        .then(response => response.json())
+        .then(data => {
+            const newsContainer = document.getElementById('news-container');
+            newsContainer.innerHTML = '';
+            data.forEach(article => {
+                const articleElement = document.createElement('article');
+                articleElement.innerHTML = `
+                    <h2>${article.title}</h2>
+                    <p>${article.description}</p>
+                    <a href="${article.url}" target="_blank">Read more</a>
+                `;
+                newsContainer.appendChild(articleElement);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+</script>
+{% endblock %}

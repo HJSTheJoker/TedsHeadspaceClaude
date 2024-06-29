@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Theme Park Planner - Ted's Headspace Claude{% endblock %}
+
+{% block content %}
+<h1>Theme Park Trip Planner</h1>
+<p>Plan your next theme park adventure with real-time queue information.</p>
+
+<div id="park-selector">
+    <label for="park-select">Select a park:</label>
+    <select id="park-select">
+        <option value="">--Please choose a park--</option>
+    </select>
+</div>
+
+<div id="ride-info">
+    <h2>Ride Wait Times</h2>
+    <ul id="ride-list"></ul>
+</div>
+
+<script>
+    // Fetch parks and populate the select element
+    fetch('/fetch-parks')
+        .then(response => response.json())
+        .then(data => {
+            const parkSelect = document.getElementById('park-select');
+            data.forEach(park => {
+                const option = document.createElement('option');
+                option.value = park.id;
+                option.textContent = park.name;
+                parkSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+
+    // Fetch ride information when a park is selected
+    document.getElementById('park-select').addEventListener('change', (event) => {
+        const parkId = event.target.value;
+        if (parkId) {
+            fetch(`/fetch-rides/${parkId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const rideList = document.getElementById('ride-list');
+                    rideList.innerHTML = '';
+                    data.rides.forEach(ride => {
+                        const li = document.createElement('li');
+                        li.textContent = `${ride.name}: ${ride.wait_time} minutes`;
+                        rideList.appendChild(li);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    });
+</script>
+{% endblock %}
