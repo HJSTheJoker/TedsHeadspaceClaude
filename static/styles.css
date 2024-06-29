@@ -1,103 +1,169 @@
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2c3e50;
-    --background-color: #ecf0f1;
-    --text-color: #34495e;
-    --link-color: #e74c3c;
+    --primary-color: #4a90e2;
+    --secondary-color: #50c878;
+    --background-color: #f4f7f6;
+    --text-color: #333333;
+    --link-color: #4a90e2;
+    --card-background: #ffffff;
+    --header-background: #ffffff;
+    --footer-background: #333333;
+}
+
+[data-theme="dark"] {
+    --primary-color: #61dafb;
+    --secondary-color: #66c88b;
+    --background-color: #1a1a1a;
+    --text-color: #f4f7f6;
+    --link-color: #61dafb;
+    --card-background: #2c2c2c;
+    --header-background: #2c2c2c;
+    --footer-background: #1a1a1a;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s ease;
 }
 
 header {
-    background-color: var(--primary-color);
-    color: white;
-    text-align: center;
-    padding: 1rem;
+    background-color: var(--header-background);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
+    display: flex;
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 10px;
+    margin-left: 20px;
 }
 
 nav ul li a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
 }
 
 main {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 5%;
 }
 
-h1, h2 {
-    color: var(--secondary-color);
+h1, h2, h3 {
+    color: var(--primary-color);
 }
 
 a {
     color: var(--link-color);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    text-decoration: underline;
+    color: var(--secondary-color);
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 footer {
-    background-color: var(--secondary-color);
+    background-color: var(--footer-background);
     color: white;
     text-align: center;
     padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    margin-top: 2rem;
 }
 
-/* Specific styles for the news page */
-#news-container article {
-    background-color: white;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Specific styles for the theme park page */
-#park-selector, #ride-info {
-    background-color: white;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-select, button {
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid var(--primary-color);
-}
-
-button {
-    background-color: var(--primary-color);
-    color: white;
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
     cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-button:hover {
-    background-color: var(--secondary-color);
+#theme-toggle:hover {
+    color: var(--primary-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+    
+    .card-container {
+        grid-template-columns: 1fr;
+    }
 }

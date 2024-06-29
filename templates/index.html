@@ -1,8 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}Home - Ted's Headspace Claude{% endblock %}
+{% block title %}Home - Ted's Headspace using Claude{% endblock %}
 
 {% block content %}
-<h1>Welcome to Ted's Headspace Claude</h1>
-<p>Explore my projects, read the latest tech news, or plan your next theme park adventure!</p>
+<section class="hero fade-in">
+    <h1>Welcome to Ted's Headspace using Claude</h1>
+    <p>Explore projects, read tech news, and plan your next theme park adventure!</p>
+</section>
+
+<section class="card-container">
+    <div class="card fade-in">
+        <h2>Projects</h2>
+        <p>Check out our latest tech projects and innovations.</p>
+        <a href="{{ url_for('projects') }}">View Projects</a>
+    </div>
+    <div class="card fade-in">
+        <h2>Tech News</h2>
+        <p>Stay updated with the latest in technology and AI.</p>
+        <a href="{{ url_for('news') }}">Read News</a>
+    </div>
+    <div class="card fade-in">
+        <h2>Theme Park Planner</h2>
+        <p>Plan your next theme park visit with real-time information.</p>
+        <a href="{{ url_for('theme_park') }}">Start Planning</a>
+    </div>
+</section>
 {% endblock %}

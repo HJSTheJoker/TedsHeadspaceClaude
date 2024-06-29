@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}News - Ted's Headspace Claude{% endblock %}
+{% block title %}News - Ted's Headspace using Claude{% endblock %}
 
 {% block content %}
 <h1>Tech News</h1>
-<div id="news-container">
+<div id="news-container" class="card-container">
     <p>Loading latest tech news...</p>
 </div>
 
@@ -15,7 +15,8 @@
             const newsContainer = document.getElementById('news-container');
             newsContainer.innerHTML = '';
             data.forEach(article => {
-                const articleElement = document.createElement('article');
+                const articleElement = document.createElement('div');
+                articleElement.className = 'card fade-in';
                 articleElement.innerHTML = `
                     <h2>${article.title}</h2>
                     <p>${article.description}</p>

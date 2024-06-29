@@ -1,12 +1,24 @@
 {% extends "base.html" %}
 
-{% block title %}Projects - Ted's Headspace Claude{% endblock %}
+{% block title %}Projects - Ted's Headspace using Claude{% endblock %}
 
 {% block content %}
 <h1>Projects</h1>
-<ul>
-    <li>Theme Park Trip Planner: Plan your next theme park adventure with real-time queue information.</li>
-    <li>Tech News Aggregator: Stay up-to-date with the latest technology news.</li>
-    <li>Media Downloader: A tool for downloading media from various sources (coming soon).</li>
-</ul>
+<section class="card-container">
+    <div class="card fade-in">
+        <h2>Theme Park Trip Planner</h2>
+        <p>Plan your next theme park adventure with real-time queue information.</p>
+        <a href="{{ url_for('theme_park') }}">Try it out</a>
+    </div>
+    <div class="card fade-in">
+        <h2>Tech News Aggregator</h2>
+        <p>Stay up-to-date with the latest technology news.</p>
+        <a href="{{ url_for('news') }}">Read news</a>
+    </div>
+    <div class="card fade-in">
+        <h2>Media Downloader</h2>
+        <p>A tool for downloading media from various sources (coming soon).</p>
+        <a href="{{ url_for('media_downloader') }}">Learn more</a>
+    </div>
+</section>
 {% endblock %}
