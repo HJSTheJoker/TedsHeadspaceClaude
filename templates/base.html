@@ -12,7 +12,10 @@
     <header>
         <nav>
             <div class="logo">TH</div>
-            <ul>
+            <button id="menu-toggle" class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul id="nav-menu" class="nav-menu">
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('about') }}">About</a></li>
                 <li><a href="{{ url_for('projects') }}">Projects</a></li>

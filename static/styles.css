@@ -201,3 +201,62 @@ footer {
     align-self: flex-start;
     margin-top: 1rem;
 }
+
+/* Mobile menu styles */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--header-background);
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .nav-menu li {
+        margin: 0.5rem 0;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    #theme-toggle {
+        margin-left: auto;
+    }
+}
+
+/* Ensure the main content doesn't overlap with the fixed header on mobile */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px; /* Adjust this value based on your header height */
+    }
+
+    header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+}

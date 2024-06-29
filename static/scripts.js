@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     const themeToggle = document.getElementById('theme-toggle');
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
     function setTheme(theme) {
@@ -15,6 +17,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
     themeToggle.addEventListener('click', () => {
         const switchToTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         setTheme(switchToTheme);
+    });
+
+    // Toggle mobile menu
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+    });
+
+    // Close mobile menu when a link is clicked
+    navMenu.addEventListener('click', (event) => {
+        if (event.target.tagName === 'A') {
+            navMenu.classList.remove('show');
+        }
     });
 
     // Add fade-in effect to all main content
